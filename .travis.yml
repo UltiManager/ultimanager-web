@@ -1,0 +1,15 @@
+---
+language: node_js
+node_js: node
+
+cache: yarn
+
+script:
+  - yarn prettier:check
+  - yarn lint
+  - yarn check-types
+
+notifications:
+  email:
+    on_failure: always
+    on_success: never

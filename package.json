@@ -4,6 +4,8 @@
   "license": "Apache-2.0",
   "scripts": {
     "check-types": "tsc --noEmit",
+    "lint": "eslint --ext js,jsx,ts,tsx .",
+    "prettier:check": "prettier --check '**/*.{css,html,js,json,jsx,md,ts,tsx,yaml,yml}'",
     "start": "webpack-dev-server --hot"
   },
   "husky": {
