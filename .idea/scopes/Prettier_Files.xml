@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Prettier Files" pattern="file:*.js||file:*.json||file:*.jsx||file:*.md||file:*.ts||file:*.tsx||file:*.yaml||file:*.yml" />
+</component>

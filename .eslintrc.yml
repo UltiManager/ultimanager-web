@@ -1,0 +1,22 @@
+env:
+  browser: true
+  es6: true
+extends:
+  - "plugin:@typescript-eslint/recommended"
+  - "prettier"
+  - "prettier/@typescript-eslint"
+  - "plugin:react/recommended"
+parser: "@typescript-eslint/parser"
+plugins:
+  - "@typescript-eslint"
+  - react
+settings:
+  react:
+    version: detect
+rules:
+  "@typescript-eslint/explicit-function-return-type":
+    - error
+    # Allow for omitting the return type when the expression is already
+    # typed. This is common when typing React components where we
+    # typically state the component's type rather than what it returns.
+    - allowTypedFunctionExpressions: true
