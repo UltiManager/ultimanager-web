@@ -8,6 +8,7 @@ script:
   - yarn prettier:check
   - yarn lint
   - yarn check-types
+  - yarn test
 
 notifications:
   email:

@@ -13,6 +13,14 @@ plugins:
 settings:
   react:
     version: detect
+
+overrides:
+  - files: ["*.tsx"]
+    rules:
+      # React components written in TypeScript specify their prop types using
+      # the type system.
+      react/prop-types: off
+
 rules:
   "@typescript-eslint/explicit-function-return-type":
     - error

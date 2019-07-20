@@ -1,11 +1,10 @@
 import * as React from "react";
 import { hot } from "react-hot-loader/root";
-import Counter from "./Counter";
+import LoginForm from "./components/LoginForm";
 
 const App: React.FunctionComponent = () => (
   <div>
-    <h1>Hello, World.</h1>
-    <Counter />
+    <LoginForm onSubmit={(): void => {}} />
   </div>
 );
 
