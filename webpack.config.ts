@@ -1,4 +1,3 @@
-import * as ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
 import * as webpack from "webpack";
@@ -6,10 +5,6 @@ import * as webpack from "webpack";
 module.exports = {
   mode: "development",
   entry: {
-    vendor: [
-      // Required to support async/await
-      "@babel/polyfill"
-    ],
     main: ["./src/index"]
   },
   output: {
@@ -23,20 +18,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.[jt]sx?$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            cacheDirectory: true
-          }
-        }
+        use: "ts-loader"
       }
     ]
   },
-  plugins: [
-    new ForkTsCheckerWebpackPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new HtmlWebpackPlugin()
-  ]
+  plugins: [new webpack.NamedModulesPlugin(), new HtmlWebpackPlugin()]
 };
