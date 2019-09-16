@@ -21,10 +21,17 @@ overrides:
       # the type system.
       react/prop-types: off
 
+  - files: ["webpack.config.js"]
+    rules:
+      # The webpack configuration file has to be written in ES5, which needs to
+      # use the "require" syntax.
+      "@typescript-eslint/no-var-requires": off
+
 rules:
   "@typescript-eslint/explicit-function-return-type":
     - error
     # Allow for omitting the return type when the expression is already
     # typed. This is common when typing React components where we
     # typically state the component's type rather than what it returns.
-    - allowTypedFunctionExpressions: true
+    - allowExpressions: true
+      allowTypedFunctionExpressions: true
