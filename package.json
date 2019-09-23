@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "Apache-2.0",
   "scripts": {
-    "check-types": "tsc --noEmit",
+    "build": "NODE_ENV=production webpack-cli",
     "lint": "eslint --ext js,jsx,ts,tsx .",
     "prettier:check": "prettier --check '**/*.{css,html,js,json,jsx,md,ts,tsx,yaml,yml}'",
     "start": "webpack-dev-server",
