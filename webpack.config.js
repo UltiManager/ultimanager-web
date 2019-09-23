@@ -20,10 +20,11 @@ module.exports = {
     contentBase: DIST_DIR,
     historyApiFallback: true
   },
-  devtool: "eval",
+  devtool: process.env.NODE_ENV === "production" ? false : "inline-source-map",
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"]
   },
+  mode: process.env.NODE_ENV || "development",
   module: {
     rules: [
       {

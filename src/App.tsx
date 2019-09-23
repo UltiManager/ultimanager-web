@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Route, Switch } from "react-router";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import routes from "./routes";
 import defaultTheme from "./styles/themes";
@@ -8,6 +8,7 @@ import defaultTheme from "./styles/themes";
 const App: React.FunctionComponent = () => (
   <ThemeProvider theme={defaultTheme}>
     <BrowserRouter>
+      <Link to="/register">Register</Link>
       <Switch>
         {routes.map(route => (
           <Route
