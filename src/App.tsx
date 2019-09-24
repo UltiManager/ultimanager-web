@@ -16,7 +16,7 @@ const App: React.FunctionComponent = () => (
           <Link to="/request-password-reset">Request Password Reset</Link>
         </li>
         <li>
-          <Link to="/send-verification-email">Send Verification Email</Link>
+          <Link to="/request-verification-email">Send Verification Email</Link>
         </li>
       </ul>
       <Switch>
