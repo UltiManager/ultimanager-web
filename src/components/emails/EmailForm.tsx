@@ -8,12 +8,17 @@ interface Props {
   errors?: Record<string, string[]>;
   isLoading?: boolean;
   onSubmit: (email: string) => void;
+  submitText?: string;
 }
 
-const SendVerificationEmailFormView: React.FunctionComponent<Props> = ({
+/**
+ * Form to collect an email address.
+ */
+const EmailForm: React.FunctionComponent<Props> = ({
   errors = {},
-  isLoading,
-  onSubmit
+  isLoading = false,
+  onSubmit,
+  submitText = "submit"
 }) => {
   const [email, setEmail] = React.useState("");
 
@@ -33,6 +38,7 @@ const SendVerificationEmailFormView: React.FunctionComponent<Props> = ({
 
   return (
     <form onSubmit={handleSubmit}>
+      <ErrorList>{errors.non_field_errors}</ErrorList>
       <FormControl>
         <InputLabel htmlFor="email">Email:</InputLabel>
         <TextInput
@@ -46,9 +52,9 @@ const SendVerificationEmailFormView: React.FunctionComponent<Props> = ({
         />
         <ErrorList>{errors.email}</ErrorList>
       </FormControl>
-      <button type="submit">Send Email</button>
+      <button type="submit">{submitText}</button>
     </form>
   );
 };
 
-export default SendVerificationEmailFormView;
+export default EmailForm;
