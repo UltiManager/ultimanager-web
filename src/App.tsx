@@ -9,6 +9,7 @@ const App: React.FunctionComponent = () => (
   <ThemeProvider theme={defaultTheme}>
     <BrowserRouter>
       <Link to="/register">Register</Link>
+      <Link to="/send-verification-email">Send Verification Email</Link>
       <Switch>
         {routes.map(route => (
           <Route
