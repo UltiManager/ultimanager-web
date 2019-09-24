@@ -8,8 +8,17 @@ import defaultTheme from "./styles/themes";
 const App: React.FunctionComponent = () => (
   <ThemeProvider theme={defaultTheme}>
     <BrowserRouter>
-      <Link to="/register">Register</Link>
-      <Link to="/send-verification-email">Send Verification Email</Link>
+      <ul>
+        <li>
+          <Link to="/register">Register</Link>
+        </li>
+        <li>
+          <Link to="/request-password-reset">Request Password Reset</Link>
+        </li>
+        <li>
+          <Link to="/send-verification-email">Send Verification Email</Link>
+        </li>
+      </ul>
       <Switch>
         {routes.map(route => (
           <Route

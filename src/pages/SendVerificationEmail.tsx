@@ -11,7 +11,7 @@ const SendVerificationEmail: React.FunctionComponent<RouteComponentProps> = ({
         exact={true}
         path={match.path}
         render={({ match: routeMatch }) => (
-          <SendEmailVerificationForm successUrl={`${match.url}/success`} />
+          <SendEmailVerificationForm successUrl={`${routeMatch.url}/success`} />
         )}
       />
       <Route

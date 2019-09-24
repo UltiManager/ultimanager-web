@@ -4,14 +4,14 @@ import { useCallback, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../../settings";
 import Container from "../Container";
+import EmailForm from "../emails/EmailForm";
 import Heading from "../typography/Heading";
-import EmailForm from "./EmailForm";
 
 interface Props {
   successUrl: string;
 }
 
-const SendEmailVerificationForm: React.FunctionComponent<Props> = ({
+const SendPasswordResetForm: React.FunctionComponent<Props> = ({
   successUrl
 }) => {
   const [errors, setErrors] = useState<Record<string, string[]>>({});
@@ -22,11 +22,12 @@ const SendEmailVerificationForm: React.FunctionComponent<Props> = ({
     async (email: string) => {
       setIsLoading(true);
 
+      let newFormComplete = false;
       try {
-        await axios.post(`${API_ROOT}/accounts/email-verification-requests/`, {
+        await axios.post(`${API_ROOT}/accounts/password-reset-requests/`, {
           email
         });
-        setFormComplete(true);
+        newFormComplete = true;
       } catch (e) {
         if (e.response) {
           if (e.response.status === 400) {
@@ -35,6 +36,7 @@ const SendEmailVerificationForm: React.FunctionComponent<Props> = ({
         }
       } finally {
         setIsLoading(false);
+        setFormComplete(newFormComplete);
       }
     },
     [setErrors, setFormComplete, setIsLoading]
@@ -46,10 +48,10 @@ const SendEmailVerificationForm: React.FunctionComponent<Props> = ({
 
   return (
     <Container>
-      <Heading>Send Verification Email</Heading>
+      <Heading>Request Password Reset</Heading>
       <p>
-        If your verification email was lost or expired, you may resend it by
-        submitting the following form.
+        If you have lost or forgotten your password, enter your email address
+        and we&apos;ll send you a token that you can use to reset it.
       </p>
       <EmailForm
         errors={errors}
@@ -61,4 +63,4 @@ const SendEmailVerificationForm: React.FunctionComponent<Props> = ({
   );
 };
 
-export default SendEmailVerificationForm;
+export default SendPasswordResetForm;

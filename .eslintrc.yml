@@ -35,3 +35,5 @@ rules:
     # typically state the component's type rather than what it returns.
     - allowExpressions: true
       allowTypedFunctionExpressions: true
+  "@typescript-eslint/no-unused-vars":
+    - error
