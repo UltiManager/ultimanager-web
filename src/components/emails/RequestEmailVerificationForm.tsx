@@ -11,7 +11,7 @@ interface Props {
   successUrl: string;
 }
 
-const SendEmailVerificationForm: React.FunctionComponent<Props> = ({
+const RequestEmailVerificationForm: React.FunctionComponent<Props> = ({
   successUrl
 }) => {
   const [errors, setErrors] = useState<Record<string, string[]>>({});
@@ -61,4 +61,4 @@ const SendEmailVerificationForm: React.FunctionComponent<Props> = ({
   );
 };
 
-export default SendEmailVerificationForm;
+export default RequestEmailVerificationForm;

@@ -1,17 +1,19 @@
 import * as React from "react";
 import { Route, RouteComponentProps, Switch } from "react-router-dom";
-import SendEmailVerificationForm from "../components/emails/SendEmailVerificationForm";
+import RequestEmailVerificationForm from "../components/emails/RequestEmailVerificationForm";
 
-const SendVerificationEmail: React.FunctionComponent<RouteComponentProps> = ({
-  match
-}) => {
+const RequestVerificationEmail: React.FunctionComponent<
+  RouteComponentProps
+> = ({ match }) => {
   return (
     <Switch>
       <Route
         exact={true}
         path={match.path}
         render={({ match: routeMatch }) => (
-          <SendEmailVerificationForm successUrl={`${routeMatch.url}/success`} />
+          <RequestEmailVerificationForm
+            successUrl={`${routeMatch.url}/success`}
+          />
         )}
       />
       <Route
@@ -23,4 +25,4 @@ const SendVerificationEmail: React.FunctionComponent<RouteComponentProps> = ({
   );
 };
 
-export default SendVerificationEmail;
+export default RequestVerificationEmail;

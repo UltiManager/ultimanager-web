@@ -31,10 +31,10 @@ const routes: Route<RouteComponentProps>[] = [
     component: asLoadable({
       loader: () =>
         import(
-          /* webpackChunkName: "send-verification-email" */ "./pages/SendVerificationEmail"
+          /* webpackChunkName: "request-verification-email" */ "./pages/RequestVerificationEmail"
         )
     }),
-    path: "/send-verification-email"
+    path: "/request-verification-email"
   },
   {
     component: asLoadable({
