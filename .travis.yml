@@ -10,6 +10,8 @@ script:
   - yarn test
   - yarn build
 
+after_success: yarn codecov
+
 notifications:
   email:
     on_failure: always
