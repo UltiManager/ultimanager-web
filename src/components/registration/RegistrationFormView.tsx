@@ -1,6 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
 import ErrorList from "../forms/Error";
+import FormControl from "../forms/FormControl";
+import InputLabel from "../forms/InputLabel";
+import TextInput from "../forms/TextInput";
 
 interface RegistrationData {
   email: string;
@@ -13,22 +16,6 @@ interface Props {
   isLoading?: boolean;
   onSubmit: (data: RegistrationData) => void;
 }
-
-const FormControl = styled.div`
-  margin-bottom: 1em;
-`;
-
-const Input = styled.input`
-  box-sizing: border-box;
-  display: block;
-  font-family: "Open Sans", sans-serif;
-  width: 100%;
-`;
-
-const Label = styled.label`
-  display: block;
-  font-family: "Open Sans", sans-serif;
-`;
 
 const RegistrationFormView: React.FunctionComponent<Props> = ({
   errors = {},
@@ -66,8 +53,8 @@ const RegistrationFormView: React.FunctionComponent<Props> = ({
   return (
     <form onSubmit={handleSubmit}>
       <FormControl>
-        <Label htmlFor="email">Email:</Label>
-        <Input
+        <InputLabel htmlFor="email">Email:</InputLabel>
+        <TextInput
           disabled={isLoading}
           id="email"
           name="email"
@@ -79,8 +66,8 @@ const RegistrationFormView: React.FunctionComponent<Props> = ({
         <ErrorList>{errors.email}</ErrorList>
       </FormControl>
       <FormControl>
-        <Label htmlFor="password">Password:</Label>
-        <Input
+        <InputLabel htmlFor="password">Password:</InputLabel>
+        <TextInput
           disabled={isLoading}
           id="password"
           name="password"
@@ -92,8 +79,8 @@ const RegistrationFormView: React.FunctionComponent<Props> = ({
         <ErrorList>{errors.password}</ErrorList>
       </FormControl>
       <FormControl>
-        <Label htmlFor="name">Name:</Label>
-        <Input
+        <InputLabel htmlFor="name">Name:</InputLabel>
+        <TextInput
           disabled={isLoading}
           id="name"
           name="name"
