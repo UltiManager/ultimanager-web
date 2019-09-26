@@ -1,8 +1,7 @@
-import axios from "axios";
 import * as React from "react";
 import { useCallback, useState } from "react";
 import { Redirect } from "react-router-dom";
-import { API_ROOT } from "../../settings";
+import AccountService from "../../services/AccountService";
 import Container from "../Container";
 import Heading from "../typography/Heading";
 import EmailForm from "./EmailForm";
@@ -22,20 +21,17 @@ const RequestEmailVerificationForm: React.FunctionComponent<Props> = ({
     async (email: string) => {
       setIsLoading(true);
 
-      try {
-        await axios.post(`${API_ROOT}/accounts/email-verification-requests/`, {
-          email
-        });
-        setFormComplete(true);
-      } catch (e) {
-        if (e.response) {
-          if (e.response.status === 400) {
-            setErrors(e.response.data);
-          }
-        }
-      } finally {
+      const response = await AccountService.requestEmailVerification(email);
+
+      if (response.isError) {
+        setErrors(response.errors || {});
         setIsLoading(false);
+
+        return;
       }
+
+      setIsLoading(false);
+      setFormComplete(true);
     },
     [setErrors, setFormComplete, setIsLoading]
   );
