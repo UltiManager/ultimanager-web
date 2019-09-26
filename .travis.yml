@@ -4,6 +4,10 @@ node_js: node
 
 cache: yarn
 
+env:
+  global:
+    - ULTIMANAGER_API_ROOT=http://ultimanager.example.com
+
 script:
   - yarn prettier:check
   - yarn lint
