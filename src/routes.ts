@@ -39,6 +39,13 @@ const routes: Route<RouteComponentProps>[] = [
   {
     component: asLoadable({
       loader: () =>
+        import(/* webpackChunkName: "reset-password" */ "./pages/ResetPassword")
+    }),
+    path: "/reset-password"
+  },
+  {
+    component: asLoadable({
+      loader: () =>
         import(/* webpackChunkName: "verify-email" */ "./pages/VerifyEmail")
     }),
     path: "/verify-email"
