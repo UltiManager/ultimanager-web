@@ -23,15 +23,15 @@ const RequestEmailVerificationForm: React.FunctionComponent<Props> = ({
 
       const response = await AccountService.requestEmailVerification(email);
 
+      let formShouldBeCompleted = false;
       if (response.isError) {
         setErrors(response.errors || {});
-        setIsLoading(false);
-
-        return;
+      } else {
+        formShouldBeCompleted = true;
       }
 
       setIsLoading(false);
-      setFormComplete(true);
+      setFormComplete(formShouldBeCompleted);
     },
     [setErrors, setFormComplete, setIsLoading]
   );
