@@ -10,6 +10,9 @@ const App: React.FunctionComponent = () => (
     <BrowserRouter>
       <ul>
         <li>
+          <Link to="/log-in">Log In</Link>
+        </li>
+        <li>
           <Link to="/register">Register</Link>
         </li>
         <li>

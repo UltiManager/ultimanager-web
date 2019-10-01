@@ -13,6 +13,12 @@ export interface Route<Props> {
 const routes: Route<RouteComponentProps>[] = [
   {
     component: asLoadable({
+      loader: () => import(/* webpackChunkName: "login" */ "./pages/Login")
+    }),
+    path: "/log-in"
+  },
+  {
+    component: asLoadable({
       loader: () =>
         import(/* webpackChunkName: "register" */ "./pages/Register")
     }),
