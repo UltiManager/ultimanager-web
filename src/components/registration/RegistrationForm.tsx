@@ -3,7 +3,9 @@ import * as React from "react";
 import { useCallback, useState } from "react";
 import { Redirect } from "react-router";
 import { API_ROOT } from "../../settings";
+import BaseText from "../BaseText";
 import Container from "../Container";
+import Link from "../Link";
 import Heading from "../typography/Heading";
 import RegistrationFormView from "./RegistrationFormView";
 
@@ -47,6 +49,10 @@ const RegistrationForm: React.FunctionComponent<Props> = ({ successUrl }) => {
   return (
     <Container size="small">
       <Heading>Register</Heading>
+      <BaseText>
+        If you have already created an account, you may{" "}
+        <Link to="/log-in">log in</Link>.
+      </BaseText>
       <RegistrationFormView
         errors={errors}
         isLoading={isLoading}

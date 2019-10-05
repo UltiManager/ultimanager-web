@@ -3,6 +3,7 @@ import * as React from "react";
 import { useCallback, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../../settings";
+import BaseText from "../BaseText";
 import Container from "../Container";
 import EmailForm from "../emails/EmailForm";
 import Heading from "../typography/Heading";
@@ -47,12 +48,12 @@ const SendPasswordResetForm: React.FunctionComponent<Props> = ({
   }
 
   return (
-    <Container>
-      <Heading>Request Password Reset</Heading>
-      <p>
+    <Container size="small">
+      <Heading>Request a Password Reset</Heading>
+      <BaseText>
         If you have lost or forgotten your password, enter your email address
-        and we&apos;ll send you a token that you can use to reset it.
-      </p>
+        and we&apos;ll send you a link to reset it.
+      </BaseText>
       <EmailForm
         errors={errors}
         isLoading={isLoading}

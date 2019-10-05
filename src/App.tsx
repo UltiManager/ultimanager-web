@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Route, Switch } from "react-router";
-import { BrowserRouter, Link } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import Link from "./components/Link";
 import routes from "./routes";
 import defaultTheme from "./styles/themes";
 

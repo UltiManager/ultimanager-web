@@ -7,6 +7,7 @@ import Container from "../Container";
 import ErrorList from "../forms/Error";
 import Heading from "../typography/Heading";
 import PasswordResetFormView from "./PasswordResetFormView";
+import BaseText from "../BaseText";
 
 interface Props {
   successUrl: string;
@@ -51,9 +52,9 @@ const PasswordResetForm: React.FunctionComponent<Props> = ({
   }
 
   return (
-    <Container>
+    <Container size="small">
       <Heading>Reset Your Password</Heading>
-      <p>Use the following form to reset your password.</p>
+      <BaseText>Use the following form to reset your password.</BaseText>
       <ErrorList>{errors.token}</ErrorList>
       <PasswordResetFormView
         errors={errors}

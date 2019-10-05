@@ -1,9 +1,12 @@
 import { DefaultTheme } from "styled-components";
 
 const defaultTheme: DefaultTheme = {
+  colors: {
+    primary: "#0074d4"
+  },
   containers: {
     width: {
-      small: "20rem",
+      small: "25rem",
       medium: "50rem"
     }
   }

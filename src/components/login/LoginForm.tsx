@@ -3,7 +3,9 @@ import * as React from "react";
 import { useCallback, useState } from "react";
 import { Redirect } from "react-router";
 import { API_ROOT } from "../../settings";
+import BaseText from "../BaseText";
 import Container from "../Container";
+import Link from "../Link";
 import Heading from "../typography/Heading";
 import LoginFormView from "./LoginFormView";
 
@@ -48,6 +50,10 @@ const LoginForm: React.FunctionComponent<Props> = ({ successUrl }) => {
   return (
     <Container size="small">
       <Heading>Log In</Heading>
+      <BaseText>
+        Log in with your email and password. If you don&apos;t have an account,
+        you can <Link to="/register">register</Link>.
+      </BaseText>
       <LoginFormView
         errors={errors}
         isLoading={isLoading}

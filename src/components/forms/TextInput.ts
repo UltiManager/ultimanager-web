@@ -12,7 +12,7 @@ const TextInput = styled.input`
   width: 100%;
 
   &:focus {
-    box-shadow: 0 0 2px 2px lightskyblue;
+    box-shadow: 0 0 2px 2px ${props => props.theme.colors.primary};
   }
 `;
 

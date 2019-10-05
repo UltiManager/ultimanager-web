@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import * as React from "react";
 import { Redirect } from "react-router";
 import { API_ROOT } from "../../settings";
+import BaseText from "../BaseText";
 import Container from "../Container";
 import ErrorList from "../forms/Error";
 import Heading from "../typography/Heading";
@@ -44,9 +45,11 @@ const EmailVerificationForm: React.FunctionComponent<Props> = ({
   }
 
   return (
-    <Container>
+    <Container size="small">
       <Heading>Verify Your Email</Heading>
-      <p>Please click the button to verify ownership of your email address.</p>
+      <BaseText>
+        Please click the button to verify ownership of your email address.
+      </BaseText>
       <ErrorList>{errors.token}</ErrorList>
       <button disabled={isLoading} onClick={handleSubmit}>
         Verify Email

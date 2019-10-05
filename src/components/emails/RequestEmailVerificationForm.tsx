@@ -2,6 +2,7 @@ import * as React from "react";
 import { useCallback, useState } from "react";
 import { Redirect } from "react-router-dom";
 import AccountService from "../../services/AccountService";
+import BaseText from "../BaseText";
 import Container from "../Container";
 import Heading from "../typography/Heading";
 import EmailForm from "./EmailForm";
@@ -41,12 +42,12 @@ const RequestEmailVerificationForm: React.FunctionComponent<Props> = ({
   }
 
   return (
-    <Container>
+    <Container size="small">
       <Heading>Send Verification Email</Heading>
-      <p>
+      <BaseText>
         If your verification email was lost or expired, you may resend it by
         submitting the following form.
-      </p>
+      </BaseText>
       <EmailForm
         errors={errors}
         isLoading={isLoading}
