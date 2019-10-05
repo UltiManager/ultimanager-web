@@ -5,7 +5,7 @@ import { Redirect } from "react-router";
 import { API_ROOT } from "../../settings";
 import BaseText from "../BaseText";
 import Container from "../Container";
-import ErrorList from "../forms/Error";
+import ErrorList from "../forms/ErrorList";
 import Heading from "../typography/Heading";
 
 interface Props {

@@ -1,5 +1,5 @@
 import * as React from "react";
-import ErrorList from "../forms/Error";
+import ErrorList from "../forms/ErrorList";
 import FormControl from "../forms/FormControl";
 import InputLabel from "../forms/InputLabel";
 import TextInput from "../forms/TextInput";
@@ -41,6 +41,7 @@ const EmailForm: React.FunctionComponent<Props> = ({
       <ErrorList>{errors.non_field_errors}</ErrorList>
       <FormControl>
         <InputLabel htmlFor="email">Email:</InputLabel>
+        <ErrorList>{errors.email}</ErrorList>
         <TextInput
           disabled={isLoading}
           id="email"
@@ -50,7 +51,6 @@ const EmailForm: React.FunctionComponent<Props> = ({
           type="email"
           value={email}
         />
-        <ErrorList>{errors.email}</ErrorList>
       </FormControl>
       <button type="submit">{submitText}</button>
     </form>

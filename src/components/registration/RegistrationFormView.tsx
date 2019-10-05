@@ -1,5 +1,5 @@
 import * as React from "react";
-import ErrorList from "../forms/Error";
+import ErrorList from "../forms/ErrorList";
 import FormControl from "../forms/FormControl";
 import InputLabel from "../forms/InputLabel";
 import TextInput from "../forms/TextInput";
@@ -53,6 +53,7 @@ const RegistrationFormView: React.FunctionComponent<Props> = ({
     <form onSubmit={handleSubmit}>
       <FormControl>
         <InputLabel htmlFor="email">Email:</InputLabel>
+        <ErrorList>{errors.email}</ErrorList>
         <TextInput
           disabled={isLoading}
           id="email"
@@ -62,10 +63,10 @@ const RegistrationFormView: React.FunctionComponent<Props> = ({
           type="email"
           value={email}
         />
-        <ErrorList>{errors.email}</ErrorList>
       </FormControl>
       <FormControl>
         <InputLabel htmlFor="password">Password:</InputLabel>
+        <ErrorList>{errors.password}</ErrorList>
         <TextInput
           disabled={isLoading}
           id="password"
@@ -75,10 +76,10 @@ const RegistrationFormView: React.FunctionComponent<Props> = ({
           type="password"
           value={password}
         />
-        <ErrorList>{errors.password}</ErrorList>
       </FormControl>
       <FormControl>
         <InputLabel htmlFor="name">Name:</InputLabel>
+        <ErrorList>{errors.name}</ErrorList>
         <TextInput
           disabled={isLoading}
           id="name"
@@ -87,7 +88,6 @@ const RegistrationFormView: React.FunctionComponent<Props> = ({
           required={true}
           value={name}
         />
-        <ErrorList>{errors.name}</ErrorList>
       </FormControl>
       <button disabled={isLoading} type="submit">
         Create Account
