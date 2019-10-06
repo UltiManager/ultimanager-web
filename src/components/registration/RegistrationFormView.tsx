@@ -10,7 +10,7 @@ interface RegistrationData {
   password: string;
 }
 
-interface Props {
+export interface Props {
   errors?: Record<string, string[]>;
   isLoading?: boolean;
   onSubmit: (data: RegistrationData) => void;
