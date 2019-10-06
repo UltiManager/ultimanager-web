@@ -1,5 +1,7 @@
 import { render, fireEvent } from "@testing-library/react";
 import * as React from "react";
+import { ThemeProvider } from "styled-components";
+import defaultTheme from "../../styles/themes";
 import LoginFormView from "./LoginFormView";
 
 describe("LoginFormView", () => {
@@ -8,7 +10,11 @@ describe("LoginFormView", () => {
     const password = "password";
 
     const handleSubmit = jest.fn();
-    const component = render(<LoginFormView onSubmit={handleSubmit} />);
+    const component = render(
+      <ThemeProvider theme={defaultTheme}>
+        <LoginFormView onSubmit={handleSubmit} />
+      </ThemeProvider>
+    );
 
     const emailInput = await component.findByLabelText(/email/i);
     fireEvent.change(emailInput, { target: { value: email } });

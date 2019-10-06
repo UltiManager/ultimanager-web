@@ -1,15 +1,24 @@
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, RenderResult } from "@testing-library/react";
 import * as React from "react";
-import RegistrationFormView from "./RegistrationFormView";
+import { ThemeProvider } from "styled-components";
+import defaultTheme from "../../styles/themes";
+import RegistrationFormView, { Props } from "./RegistrationFormView";
 
-describe("RegistrationForm", () => {
+const renderComponent = (props: Props): RenderResult =>
+  render(
+    <ThemeProvider theme={defaultTheme}>
+      <RegistrationFormView {...props} />
+    </ThemeProvider>
+  );
+
+describe("RegistrationFormView", () => {
   it("Should call the callback prop when submitted", async () => {
     const email = "test@example.com";
     const password = "password";
     const name = "Test User";
 
     const handleSubmit = jest.fn();
-    const component = render(<RegistrationFormView onSubmit={handleSubmit} />);
+    const component = renderComponent({ onSubmit: handleSubmit });
 
     const emailInput = await component.findByLabelText(/email/i);
     fireEvent.change(emailInput, { target: { value: email } });
@@ -29,9 +38,7 @@ describe("RegistrationForm", () => {
   });
 
   it("Should disable all elements when loading", () => {
-    const component = render(
-      <RegistrationFormView isLoading={true} onSubmit={() => {}} />
-    );
+    const component = renderComponent({ isLoading: true, onSubmit: () => {} });
 
     const inputs = component.container.querySelectorAll("input");
     inputs.forEach((input: HTMLInputElement) => {
