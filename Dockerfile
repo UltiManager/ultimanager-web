@@ -17,6 +17,7 @@ EXPOSE 8080
 CMD ["yarn", "start"]
 
 
+# Image to actually build the static files for production.
 FROM build-deps AS prod-build
 
 RUN yarn build
@@ -25,15 +26,14 @@ RUN yarn build
 # Production image that serves the built static files
 FROM nginx:alpine AS serve
 
+EXPOSE 80
+
 RUN apk add --no-cache gettext
 
 COPY ./docker-entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT /usr/local/bin/docker-entrypoint.sh
 
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=prod-build /opt/ultimanager-web/dist /usr/share/nginx/html
-
-EXPOSE 80
-
-ENTRYPOINT /usr/local/bin/docker-entrypoint.sh
