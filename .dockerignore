@@ -1,0 +1,6 @@
+# Mostly excluding folders with the potentential to be large.
+.git
+.idea
+coverage
+dist
+node_modules
