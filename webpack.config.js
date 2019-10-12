@@ -42,6 +42,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      // The template explicitly includes files, so the entry points should not
+      // be injected into the root file.
+      inject: false,
       template: path.resolve(PUBLIC_DIR, "index.html")
     }),
     new webpack.EnvironmentPlugin(["ULTIMANAGER_API_ROOT"])
