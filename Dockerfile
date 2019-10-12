@@ -1,22 +1,18 @@
-FROM node:alpine AS build-deps
+# Base image with dependencies used to build the app.
+FROM node AS build-deps
 
 WORKDIR /opt/ultimanager-web
 COPY package.json yarn.lock ./
 
-RUN yarn
+RUN yarn --dev
 
 COPY . ./
 
 
-FROM node AS dev
+# Development image for running the dev server
+FROM build-deps AS dev
 
 EXPOSE 8080
-
-ENV ULTIMANAGER_API_ROOT=http://localhost:8000
-
-WORKDIR /opt/ultimanager-web
-COPY --from=build-deps /opt/ultimanager-web /opt/ultimanager-web
-RUN yarn --dev
 
 CMD ["yarn", "start"]
 
@@ -26,9 +22,10 @@ FROM build-deps AS prod-build
 RUN yarn build
 
 
+# Production image that serves the built static files
 FROM nginx:alpine AS serve
 
-RUN apk add gettext
+RUN apk add --no-cache gettext
 
 COPY ./docker-entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh

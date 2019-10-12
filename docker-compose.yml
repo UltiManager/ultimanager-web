@@ -5,7 +5,15 @@ services:
     build:
       context: .
       target: dev
+
+    # Specify an image name so the built image is named appropriately.
+    image: ultimanager-web:dev
+
+    # Expose webpack-dev-server to the local host.
     ports:
       - "8080:8080"
+
+    # Mount the source files so that local changes are instantly reflected by
+    # the dev server.
     volumes:
       - .:/opt/ultimanager-web/:rw
