@@ -2,7 +2,12 @@ import * as React from "react";
 import { render } from "react-dom";
 import App from "./App";
 
-const root = document.createElement("div");
-document.body.appendChild(root);
+const root = document.getElementById("app");
 
-render(<App />, root);
+if (root) {
+  document.body.appendChild(root);
+
+  render(<App />, root);
+} else {
+  console.error("Could not find root element to render application in.");
+}

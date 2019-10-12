@@ -4,23 +4,29 @@ const path = require("path");
 const webpack = require("webpack");
 
 const DIST_DIR = path.resolve(__dirname, "dist");
+const PUBLIC_DIR = path.resolve(__dirname, "public");
 const SOURCE_DIR = path.resolve(__dirname, "src");
 
 dotenv.config();
 
+const devMode = process.env.NODE_ENV !== "production";
+
 module.exports = {
   entry: path.resolve(SOURCE_DIR, "index.tsx"),
   output: {
-    chunkFilename: "[name].bundle.js",
-    filename: "[name].bundle.js",
+    chunkFilename: devMode
+      ? "[name].chunk.js"
+      : "[name].[contenthash].chunk.js",
+    filename: devMode ? "[name].bundle.js" : "[name].[contenthash].bundle.js",
     path: DIST_DIR,
     publicPath: "/"
   },
   devServer: {
     contentBase: DIST_DIR,
-    historyApiFallback: true
+    historyApiFallback: true,
+    host: "0.0.0.0"
   },
-  devtool: process.env.NODE_ENV === "production" ? false : "inline-source-map",
+  devtool: devMode ? "inline-source-map" : false,
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"]
   },
@@ -36,9 +42,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      links: [
-        "https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap"
-      ]
+      template: path.resolve(PUBLIC_DIR, "index.html")
     }),
     new webpack.EnvironmentPlugin(["ULTIMANAGER_API_ROOT"])
   ]

@@ -1,20 +1,31 @@
 ---
-language: node_js
-node_js: node
-
-cache: yarn
-
 env:
   global:
-    - ULTIMANAGER_API_ROOT=http://ultimanager.example.com
+    - ULTIMANAGER_API_ROOT=http://localhost
 
-script:
-  - yarn prettier:check
-  - yarn lint
-  - yarn test
-  - yarn build
+matrix:
+  include:
+    - language: node_js
+      node_js: node
 
-after_success: yarn codecov
+      cache: yarn
+
+      script:
+        - yarn prettier:check
+        - yarn lint
+        - yarn test
+        - yarn build
+
+      after_success: yarn codecov
+
+    # Test building the docker image
+    - language: minimal
+
+      services:
+        - docker
+
+      script:
+        - docker build -t ultimanager-web .
 
 notifications:
   email:
