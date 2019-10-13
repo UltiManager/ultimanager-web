@@ -45,7 +45,7 @@ const RequestEmailVerificationForm: React.FunctionComponent<Props> = ({
     <Container size="small">
       <Heading>Send Verification Email</Heading>
       <BaseText>
-        If your verification email was lost or expired, you may resend it by
+        If your verification email was lost or has expired, you may resend it by
         submitting the following form.
       </BaseText>
       <EmailForm

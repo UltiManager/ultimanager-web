@@ -6,6 +6,7 @@ import TextInput from "../forms/TextInput";
 
 interface Props {
   errors?: Record<string, string[]>;
+  helpText?: React.ReactNode | React.ReactNodeArray;
   isLoading?: boolean;
   onSubmit: (email: string) => void;
   submitText?: string;
@@ -16,6 +17,7 @@ interface Props {
  */
 const EmailForm: React.FunctionComponent<Props> = ({
   errors = {},
+  helpText,
   isLoading = false,
   onSubmit,
   submitText = "submit"
@@ -51,6 +53,7 @@ const EmailForm: React.FunctionComponent<Props> = ({
           type="email"
           value={email}
         />
+        {helpText}
       </FormControl>
       <button type="submit">{submitText}</button>
     </form>

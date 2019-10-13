@@ -1,8 +1,7 @@
-import * as React from "react";
 import styled from "styled-components";
 import LogoShape from "react-svg-loader!../images/logo.svg";
 
-const LogoWrapper = styled.div`
+const Logo = styled(LogoShape)`
   height: 64px;
   width: 64px;
 
@@ -10,11 +9,5 @@ const LogoWrapper = styled.div`
     fill: ${props => props.theme.colors.primary};
   }
 `;
-
-const Logo: React.FunctionComponent = () => (
-  <LogoWrapper>
-    <LogoShape />
-  </LogoWrapper>
-);
 
 export default Logo;
