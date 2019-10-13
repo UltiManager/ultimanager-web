@@ -3,12 +3,14 @@ import { Route, Switch } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import Link from "./components/Link";
+import Logo from "./components/Logo";
 import routes from "./routes";
 import defaultTheme from "./styles/themes";
 
 const App: React.FunctionComponent = () => (
   <ThemeProvider theme={defaultTheme}>
     <BrowserRouter>
+      <Logo />
       <ul>
         <li>
           <Link to="/log-in">Log In</Link>
