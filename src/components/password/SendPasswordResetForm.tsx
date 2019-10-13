@@ -6,6 +6,8 @@ import { API_ROOT } from "../../settings";
 import BaseText from "../BaseText";
 import Container from "../Container";
 import EmailForm from "../emails/EmailForm";
+import HelpText from "../forms/HelpText";
+import Link from "../Link";
 import Heading from "../typography/Heading";
 
 interface Props {
@@ -56,6 +58,13 @@ const SendPasswordResetForm: React.FunctionComponent<Props> = ({
       </BaseText>
       <EmailForm
         errors={errors}
+        helpText={
+          <HelpText>
+            If you have not yet verified your email, please do so first. If you
+            need a new verification email, you may{" "}
+            <Link to="/request-verification-email">send one</Link>.
+          </HelpText>
+        }
         isLoading={isLoading}
         onSubmit={handleSubmit}
         submitText="Send Email"

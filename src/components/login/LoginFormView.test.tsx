@@ -1,5 +1,6 @@
 import { render, fireEvent } from "@testing-library/react";
 import * as React from "react";
+import { HashRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import defaultTheme from "../../styles/themes";
 import LoginFormView from "./LoginFormView";
@@ -12,7 +13,9 @@ describe("LoginFormView", () => {
     const handleSubmit = jest.fn();
     const component = render(
       <ThemeProvider theme={defaultTheme}>
-        <LoginFormView onSubmit={handleSubmit} />
+        <HashRouter>
+          <LoginFormView onSubmit={handleSubmit} />
+        </HashRouter>
       </ThemeProvider>
     );
 

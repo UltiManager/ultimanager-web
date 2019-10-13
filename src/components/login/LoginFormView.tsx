@@ -1,8 +1,17 @@
 import * as React from "react";
+import styled from "styled-components";
 import ErrorList from "../forms/ErrorList";
 import FormControl from "../forms/FormControl";
+import HelpText from "../forms/HelpText";
 import InputLabel from "../forms/InputLabel";
 import TextInput from "../forms/TextInput";
+import Link from "../Link";
+
+const FormButtons = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+`;
 
 interface Props {
   errors?: Record<string, string[]>;
@@ -53,6 +62,16 @@ const LoginFormView: React.FunctionComponent<Props> = ({
           value={email}
         />
         <ErrorList>{errors.email}</ErrorList>
+        {/* Conditionally display error text so we don't wreck the tab order. */}
+        {errors.non_field_errors && (
+          <HelpText>
+            If you need to verify your email address, you may{" "}
+            <Link to="/request-verification-email">
+              send a new verification email
+            </Link>
+            .
+          </HelpText>
+        )}
       </FormControl>
       <FormControl>
         <InputLabel htmlFor="password">Password:</InputLabel>
@@ -68,9 +87,12 @@ const LoginFormView: React.FunctionComponent<Props> = ({
         />
         <ErrorList>{errors.password}</ErrorList>
       </FormControl>
-      <button disabled={isLoading} type="submit">
-        Log In
-      </button>
+      <FormButtons>
+        <button disabled={isLoading} type="submit">
+          Log In
+        </button>
+        <Link to="/request-password-reset">Forgot password?</Link>
+      </FormButtons>
     </form>
   );
 };
