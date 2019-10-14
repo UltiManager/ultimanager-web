@@ -1,0 +1,14 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/ultimanager-web:$COMMIT_SHA", "."]
+
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/$PROJECT_ID/ultimanager-web:$COMMIT_SHA"]
+
+  - name: "gcr.io/cloud-builders/gke-deploy:stable"
+    args:
+      - run
+      - --filename=deployment
+      - --image=gcr.io/$PROJECT_ID/ultimanager-web:$COMMIT_SHA
+      - --location=$_K8S_CLUSTER_LOCATION
+      - --cluster=$_K8S_CLUSTER_NAME
