@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ultimanager-web
+  labels:
+    app: ultimanager-web
+spec:
+  selector:
+    app: ultimanager-web
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
