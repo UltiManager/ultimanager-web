@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ultimanager-web
-          image: gcr.io/ultimanager-prod/ultimanager-web
+          image: @IMAGE_REPO@/@IMAGE_NAME@:@IMAGE_TAG@
           env:
             - name: ULTIMANAGER_API_ROOT
               value: "http://localhost:8000"
