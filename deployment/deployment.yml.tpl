@@ -21,6 +21,15 @@ spec:
             - name: ULTIMANAGER_API_ROOT
               value: "http://localhost:8000"
 
+            - name: API_HOSTNAME
+              valueFrom:
+                configMapRef:
+                  name: domains-config
+                  key: API_DOMAIN
+
+            - name: ULTIMANAGER_API_ROOT
+              value: "https://${API_HOSTNAME}"
+
           resources:
             requests:
               cpu: 50m
