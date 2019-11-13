@@ -8,6 +8,6 @@ spec:
   selector:
     app: ultimanager-web
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
-      targetPort: 80

@@ -23,7 +23,7 @@ spec:
 
             - name: API_HOSTNAME
               valueFrom:
-                configMapRef:
+                configMapKeyRef:
                   name: domains-config
                   key: API_DOMAIN
 
