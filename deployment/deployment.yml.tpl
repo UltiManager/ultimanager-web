@@ -27,8 +27,10 @@ spec:
                   name: domains-config
                   key: API_DOMAIN
 
+            # Kubernetes uses parentheses for environment variable interpolation
+            # unlike shell interpolation with curly braces.
             - name: ULTIMANAGER_API_ROOT
-              value: "https://${API_HOSTNAME}"
+              value: "https://$(API_HOSTNAME)"
 
           resources:
             requests:
