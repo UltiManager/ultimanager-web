@@ -18,9 +18,6 @@ spec:
         - name: ultimanager-web
           image: @IMAGE_REPO@/@IMAGE_NAME@:@IMAGE_TAG@
           env:
-            - name: ULTIMANAGER_API_ROOT
-              value: "http://localhost:8000"
-
             - name: API_HOSTNAME
               valueFrom:
                 configMapKeyRef:
